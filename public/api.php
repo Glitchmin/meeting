@@ -28,11 +28,10 @@ $app->get(
 $app->post(
     '/api/participants',
     function (Request $request, Response $response, array $args) use ($db) {
-        
-		if (!isset($requestData[firstname]) || !isset($requestData[firstname])){
+		$requestData = $request->getParsedBody();
+		if (!isset($requestData['firstname']) || !isset($requestData['lastname'])){
 			return $response->withStatus(418);
 		}
-        $requestData = $request->getParsedBody();
         $sql = "INSERT INTO participant (firstname, lastname) VALUES('$requestData[firstname]', '$requestData[lastname]');";
         $db->query($sql);
         return $response->withStatus(201);
