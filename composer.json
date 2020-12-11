@@ -1,1 +1,14 @@
-{}
+{
+    "name": "adam/meetings-rest",
+    "authors": [
+        {
+            "name": "Glitchmin",
+            "email": "adam.p.kulczycki@gmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "^3",
+        "ext-json": "*",
+        "ext-sqlite3": "*"
+    }
+}
