@@ -36,9 +36,11 @@
             this.participants.push(newParticipant);
         });
       },
-      onRemove: function (participantToRemove){
-        this.participants = this.participants.filter((participant) => {
-          return participant.id !== participantToRemove.id;
+		onRemove: function (participantToRemove){
+        this.$http.delete('participants/' + participantToRemove.id).then(response => {
+            this.participants = this.participants.filter((participant) => {
+              return participant.id !== participantToRemove.id;
+            });
         });
       }
     }

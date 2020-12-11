@@ -38,4 +38,17 @@ $app->post(
     }
 );
 
+$app->delete(
+    '/api/participants/{id}',
+    function (Request $request, Response $response, array $args) use ($db) {
+        $sql = "DELETE FROM participant WHERE id = :flower";
+        $stmt = $db->prepare($sql);
+        $stmt->bindValue('flower', $args['id']);
+        $ret = $stmt->execute();
+        return $response->withStatus(204);
+    }
+);
+
+
+
 $app->run();
